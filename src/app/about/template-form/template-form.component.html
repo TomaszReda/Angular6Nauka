@@ -1,0 +1,50 @@
+<form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+  <div class="form-group">
+    <label for="e_mail">Email</label>
+    <input [(ngModel)]="form.e_mail" #email="ngModel" type="email" class="form-control" name="e_mail" id="e_mail"
+           placeholder="Email"
+           required>
+  </div>
+  <p class="alert-danger" *ngIf="email.errors && email.dirty && email.errors.required">Pole wymagane</p>
+
+  <div class="form-group">
+    <label for="age">Wiek</label>
+    <select [(ngModel)]="form.age" class="form-control" id="age" name="age">
+      <option>1-15</option>
+      <option>16-30</option>
+      <option>31-45</option>
+      <option>46-60</option>
+      <option>60-76</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="text">Opis Problemu</label>
+    <textarea [(ngModel)]="form.text" #text="ngModel" class="form-control" id="text" name="text" rows="3" required
+              minlength="5" maxlength="500"></textarea>
+  </div>
+  <p class="alert-danger" *ngIf="text.errors && text.dirty && text.errors.required">Pole wymagane</p>
+  <p class="alert-danger" *ngIf="text.errors && text.dirty && text.errors.minlength">Minimum 5 znaków</p>
+  <p class="alert-danger" *ngIf="text.errors && text.dirty && text.errors.rmaxlength">Minimum 500 znaków</p>
+  <fieldset class="form-group">
+    <legend>Płec</legend>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input [(ngModel)]="form.gender" type="radio" class="form-check-input" name="gender" id="optionsRadios1"
+               value="false" checked>
+        Mezczyzna
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input [(ngModel)]="form.gender" type="radio" class="form-check-input" name="gender" id="optionsRadios2"
+               value="true" >
+        Kobieta
+      </label>
+    </div>
+  </fieldset>
+  <button type="submit" class="btn btn-primary" style="width: 45%">Wyslij</button>
+
+  <button type="button" class="btn btn-primary" style="margin-left: 20px;width: 45%" (click)="reset()" >Reset</button>
+</form>

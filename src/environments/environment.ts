@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  database: 'https://api.mlab.com/api/1/databases/testtttttttttt/collections/task'
 };
 
 /*

@@ -1,0 +1,42 @@
+<form [formGroup]="forms" (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input formControlName="e_mail" type="text" class="form-control" id="email" placeholder="email">
+  </div>
+  <div class="alert-danger"
+       *ngIf="forms.get('e_mail').errors && forms.get('e_mail').dirty && forms.get('e_mail').errors.required">Wymagane
+    Pole
+  </div>
+
+  <div class="form-group">
+    <label for="age">Wiek</label>
+    <select class="form-control" id="age" formControlName="age">
+      <option>1-15</option>
+      <option>16-30</option>
+      <option>31-45</option>
+      <option>46-60</option>
+      <option>60-76</option>
+    </select>
+  </div>
+
+
+  <label for="question">Pytania</label>
+  <div formArrayName="question" id="question">
+
+
+    <div *ngFor="let address of Question.controls; let i=index">
+      <!-- The repeated alias template -->
+
+      {{i+1}}. <input type="text" [formControlName]="i">
+    </div>
+    <button type="button" style="margin-top: 6px;margin-bottom: 6px" (click)="addQuestion()">Dodaj pytanie</button>
+  </div>
+  <p class="alert-danger" *ngIf="forms.get('question').errors && forms.get('question').errors['badWord']"> Zle
+    slowa</p>
+
+
+  <button type="submit" class="btn btn-primary" style="width: 45%">Wyslij</button>
+
+  <button type="button" class="btn btn-primary" style="margin-left: 20px;width: 45%" (click)="reset()">Reset</button>
+</form>

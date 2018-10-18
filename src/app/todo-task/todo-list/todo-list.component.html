@@ -1,0 +1,22 @@
+
+<div class="container" style="font-size: 25px;font-weight: bold;margin-top: 20px">
+  <p> Wykonane zadania: {{taskList.length}}</p>
+
+  <div class="row" *ngFor="let task of taskList">
+    <div class="col-sm">
+      {{task.name}}
+    </div>
+    <div class="col-sm">
+      <button (click)="done(task)">Zrobione</button>
+    </div>
+    <div class="col-sm">
+      <button (click)="remove(task)">Usun</button>
+    </div>
+    <div class="col-sm">
+      <button [routerLink]="[task._id.$oid]">Szczegóły</button>
+    </div>
+
+
+  </div>
+
+</div>

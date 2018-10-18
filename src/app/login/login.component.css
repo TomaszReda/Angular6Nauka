@@ -1,0 +1,13 @@
+input {
+  width: 250px;
+  height: 40px;
+
+}
+form{
+  font-size: 20px;
+}
+
+button{
+  font-size: 20px;
+  text-align: center;
+}

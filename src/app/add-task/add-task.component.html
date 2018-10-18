@@ -1,0 +1,19 @@
+<div class="container" >
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+
+    <div formArrayName="taskName">
+
+      <h3>Dodaj zadanie</h3>
+      <div *ngFor="let address of taskName.controls; let i=index">
+        {{i+1}}.
+        <input  id="name" type="text" [formControlName]="i">
+
+      </div>  <button type="button" (click)="addTaskName()" style="margin-top: 4px;margin-bottom: 4px;text-align:center;width: 100%">Dodaj</button>
+
+    </div>
+    <button type="submit" class="btn btn-primary" style="width: 45%">Wyslij</button>
+    <button type="button" class="btn btn-primary" (click)="reset()" style="width: 45%;margin-left: 10px">Zresetuj</button>
+
+  </form>
+</div>
