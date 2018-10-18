@@ -11,7 +11,7 @@ import {TaskService} from '../../service/task.service';
 })
 export class DetailsComponent implements OnInit {
 
-  private task: Task = new Task();
+  public task: Task = new Task();
 
   constructor(private  router: ActivatedRoute, private taskService: TaskService) {
   }
