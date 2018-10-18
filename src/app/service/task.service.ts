@@ -13,13 +13,20 @@ export class TaskService {
 
   private tasksListObs = new BehaviorSubject<Array<Task>>([]);
 
-  constructor(private httpService: HttpService, private authService: AuthService) {
+  constructor(private httpService: HttpService, private authService: AuthService, private _firebaseAuth: AngularFireAuth) {
     this.init();
   }
 
   init() {
-    this.httpService.getTask().subscribe((list: Array<Task>) => {
-      this.tasksListObs.next(list);
+    this._firebaseAuth.authState.subscribe(x => {
+      if (x) {
+        this.httpService.getTask().subscribe((list: Array<Task>) => {
+          this.tasksListObs.next(list);
+        });
+      }
+      else {
+        this.tasksListObs.next([]);
+      }
     });
   }
 

@@ -4,6 +4,7 @@ import {Task} from '../model/task';
 import {Observable} from 'rxjs';
 import {stringDistance} from 'codelyzer/util/utils';
 import {environment} from '../../environments/environment';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,23 @@ import {environment} from '../../environments/environment';
 export class HttpService {
 
   private readonly URL = environment.database;
-  private param = new HttpParams().set('apiKey', 'c0Sfq067EXakIN_FhNEquGh6WNgUipfJ');
+  readonly param = new HttpParams().set('apiKey', 'c0Sfq067EXakIN_FhNEquGh6WNgUipfJ');
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private auth: AuthService) {
     this.getTask().subscribe(x => {
 
     });
   }
 
+  params() {
+    const query = {'userId': this.auth.user.uid};
+    const param = new HttpParams().set('apiKey', 'c0Sfq067EXakIN_FhNEquGh6WNgUipfJ').append('q', JSON.stringify(query));
+    return param;
+  }
 
   getTask(): Observable<Array<Task>> {
-    return this.httpClient.get<Array<Task>>(this.URL, {params: this.param});
+    return this.httpClient.get<Array<Task>>(this.URL, {params: this.params()});
   }
 
   saveTasks(taskList: Array<Task>): Observable<Array<Task>> {
