@@ -1,13 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
 import {RegisterComponent} from './register.component';
+import {RegulaminComponent} from './regulamin/regulamin.component';
+import {RegistComponent} from './regist/regist.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: RegisterComponent
+    component: RegisterComponent,
+    children: [
+      {
+        path: 'terms',
+        component: RegulaminComponent,
+      },
+      {
+        path: '',
+        component: RegistComponent,
+      }
+    ]
   },
 
 
@@ -24,4 +35,5 @@ const appRoutes: Routes = [
   ],
   declarations: []
 })
-export class RegisterRoutingModule { }
+export class RegisterRoutingModule {
+}

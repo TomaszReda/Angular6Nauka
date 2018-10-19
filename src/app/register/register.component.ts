@@ -9,13 +9,13 @@ import {AuthService} from '../auth/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(public authh: AuthService) {
+  constructor() {
   }
 
   ngOnInit(){}
 
   onSubmit(form: NgForm) {
-    this.authh.register(form.value.email, form.value.password);
+
   }
 
 }
