@@ -9,12 +9,12 @@ import {HttpClientModule} from '@angular/common/http';
 
 
 const config = {
-  apiKey: 'AIzaSyAuOnhe8eLq9HPexK2a8feAMWu5qgI0Q2k',
-  authDomain: 'angular6test-9b836.firebaseapp.com',
-  databaseURL: 'https://angular6test-9b836.firebaseio.com',
-  projectId: 'angular6test-9b836',
-  storageBucket: 'angular6test-9b836.appspot.com',
-  messagingSenderId: '927695141568'
+  apiKey: 'AIzaSyA19fqr1Mis7kunAcsUJnMt4hldwFQPySc',
+  authDomain: 'angular6testproject.firebaseapp.com',
+  databaseURL: 'https://angular6testproject.firebaseio.com',
+  projectId: 'angular6testproject',
+  storageBucket: 'angular6testproject.appspot.com',
+  messagingSenderId: '619364583908'
 };
 
 @NgModule({
